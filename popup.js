@@ -16,6 +16,8 @@ function click(e) {
 	}
 	else if(e.currentTarget.getAttribute("id")==="generateReddit"){
 		chrome.tabs.executeScript(null,
+	        {file:"to-markdown.js"});
+		chrome.tabs.executeScript(null,
 	        {file:"generateMarkdown.js"});
 	}
 
