@@ -1,12 +1,15 @@
 {
-  "name": "A browser action with a popup that changes the page color",
-  "description": "Change the current page color",
+  "name": "ReddBed",
+  "description": "Automatically generate web-ready or reddit-ready ReddBeds.",
   "version": "1.0",
   "permissions": [
     "tabs", "*://*/r/comments*"
   ],
+  "icons": { "16": "icon.png",
+             "48": "icon.png",
+            "128": "icon.png" },
   "browser_action": {
-      "default_title": "Set this page's color.",
+      "default_title": "Generate ReddBed",
       "default_icon": "icon.png",
       "default_popup": "popup.html"
   },

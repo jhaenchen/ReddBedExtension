@@ -1,4 +1,4 @@
-alert("hi");
+
 function getCheckedBoxes() {
   var checkboxes = document.getElementsByClassName("reddbed_select");
   var checkboxesChecked = [];
@@ -18,7 +18,7 @@ function getCheckedBoxes() {
 		
 var getParentButton = function(current){
 	var theParentContainer = current.parentElement.parentElement.parentElement.parentElement.parentElement;
-	//console.log(theParentContainer);
+
 	var theParent;
 
 	//Look to the next element up to see if it's selected
@@ -96,14 +96,14 @@ var getGenerationDifference = function (from, to){
 	var genCount = 0;
 	while(doContinue){
 		var relation = evaluateRelationship(from, to);
-		console.log(relation);
+
 		if(relation === "sibling" || relation === "same"){
 			doContinue = false;
 		}
 		else{
 			genCount += 1;
 			from = getParentButton(from);
-			console.log(from);
+		
 			if(from === undefined || from === null || !from.checked){
 				doContinue = false;
 				genCount = -1;
@@ -120,7 +120,7 @@ var embedString = "";
 var level = 1;
 for(var d = 0; d < toRecord.length; d++){
 	var relation = evaluateRelationship(toRecord[d],previous);
-	console.log(relation);
+	
 	switch(relation){
 	case "same":
 		embedString += "<div class=\"red-comment\"><a href=\""+window.location.href+toRecord[d].getAttribute("id")+"\"></a>";
@@ -130,7 +130,7 @@ for(var d = 0; d < toRecord.length; d++){
 		embedString += "<div class=\"child\"><div class=\"red-comment\"><a href=\""+window.location.href+toRecord[d].getAttribute("id")+"\"></a>";
 		
 		level += 2;
-		console.log(level);
+	
 		break;
 	case "sibling":
 		embedString += "</div><div class=\"red-comment\"><a href=\""+window.location.href+toRecord[d].getAttribute("id")+"\"></a>";
@@ -143,8 +143,7 @@ for(var d = 0; d < toRecord.length; d++){
 		var gens = getGenerationDifference(previous, toRecord[d]);
 		var gens2 = getGenerationDifference(toRecord[d],previous);
 		gens = Math.max(gens,gens2);
-		console.log(gens);
-		console.log(level);
+
 		
 		if(gens != -1){
 			for(var i = 0; i < 2*gens+1; i++){
@@ -152,8 +151,7 @@ for(var d = 0; d < toRecord.length; d++){
 			}
 			embedString += "<div class=\"red-comment\"><a href=\""+window.location.href+toRecord[d].getAttribute("id")+"\"></a>";
 			level = level-2*gens;
-			console.log(level);
-			console.log(embedString);
+
 		}
 		else{
 			
@@ -206,7 +204,7 @@ function SelectText(element) {
     }
 }
 
-console.log(embedString);
+
 var encoded = embedString.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 //var popup = document.creatElement("div");
 //popup.setAttribute("style","z-index:5;position: relative; width:50%; background-color:black;");
@@ -214,7 +212,7 @@ document.body.insertAdjacentHTML( 'afterbegin', '<div id=\'popup\' style=\" bord
 
 
 document.getElementById("embedSchema").onclick =  function(){
-	SelectText("embedSchema");
+	//SelectText("embedSchema");
 }
 
 		

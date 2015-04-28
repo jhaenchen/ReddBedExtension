@@ -18,7 +18,6 @@ function getCheckedBoxes() {
 		
 var getParentButton = function(current){
 	var theParentContainer = current.parentElement.parentElement.parentElement.parentElement.parentElement;
-	//console.log(theParentContainer);
 	var theParent;
 
 	//Look to the next element up to see if it's selected
@@ -123,7 +122,6 @@ var getCommentHtml = function(element,level){
 	div.innerHTML = markdown;
 	markdown = div.textContent || div.innerText || "";
 	markdown = markdown.replace(/\[[^\]]\]/g, '');
-	console.log(markdown);
 	return markdown;
 	
 	return toMarkdown(element.parentElement.getElementsByClassName("usertext")[0].getElementsByClassName("usertext-body")[0].getElementsByClassName("md")[0].innerHTML).replace(new RegExp("\n","g"), '\n'+indent);
@@ -201,7 +199,7 @@ for(var d = 0; d < toRecord.length; d++){
 		var gens2 = getGenerationDifference(toRecord[d],previous);
 		gens = Math.max(gens,gens2);
 		if(gens != -1){
-			for(var i = 0; i < 2*gens; i++){
+			for(var i = 0; i < gens; i++){
 				level--;
 			}
 			embedString += generateCommentMarkup(toRecord[d],level);
@@ -223,7 +221,7 @@ var postSubmitTime = document.getElementsByClassName("thing link")[0].getElement
 var postAuthor = document.getElementsByClassName("thing link")[0].getElementsByClassName("author")[0].innerText;
 var postCommentCount = document.getElementsByClassName("comments")[0].innerText.split(" ")[0];
 
-embedString = ">---\n>####["+title+"]("+titleUrl+") \n>####^(submitted "+postSubmitTime+" by /u/"+postAuthor+")\n>####^(View )^["+postCommentCount+"]("+window.location.href+") ^[comments]("+window.location.href+")\n".concat(embedString);
+embedString = ">---\n>####["+title+"]("+titleUrl+") \n>####^(submitted "+postSubmitTime+" by /u/"+postAuthor+")\n>####^["+postCommentCount+"]("+window.location.href+") ^[comments]("+window.location.href+")\n".concat(embedString);
 
 
 function SelectText(element) {
